@@ -7,6 +7,7 @@
 >3.Run core.py
 
 Required libraries : 
+
 1.OpenCV
 
 2.Numpy
