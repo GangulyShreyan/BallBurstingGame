@@ -1,10 +1,10 @@
-#BallBurstingGameOpenCV
+# BallBurstingGameOpenCV
 
->git clone <this repository>
+>1.git clone <this repository>
 
->Change object threshold BGR value in app.py
+>2.Change object threshold BGR value in app.py
 
->Run core.py
+>3.Run core.py
 
 Required libraries : 
 1.OpenCv
