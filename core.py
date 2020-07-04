@@ -3,10 +3,11 @@ import numpy as np
 import random
 
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 alive = False
 
 point = 0
+speed = 2
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')  #For the saved video codec
 out = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 480)) #For the saved video codec
@@ -15,17 +16,18 @@ out = cv2.VideoWriter('output.avi', fourcc, 20.0, (640, 480)) #For the saved vid
 while True:
     _, frame = cap.read()
     mask = cv2.inRange(frame, (94, 56, 0), (218, 167, 33), None) 
+
     if alive is False:
          centerx = random.randint(10, 630)
          center = (centerx, 20)
          alive = True
 
-    if(center[1] >= 470):
+    if(center[1] >= 450):
         alive = False
         point = 0
         
-
-    centery = center[1] + 2
+    
+    centery = center[1] + speed
     center = (center[0], centery)
     zeroes = np.zeros((480, 640), dtype=np.uint8)
     zeroes[centery][center[0]] = np.uint8(1)
@@ -35,6 +37,7 @@ while True:
     points = cv2.findNonZero(mask2)
     if(points is not None):
         point = point + 1
+        speed = speed + 1
         alive = False
 
     
